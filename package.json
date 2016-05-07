@@ -1,11 +1,10 @@
 {
   "name": "react-routes-renderer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Routes Renderer",
-  "private": true,
   "main": "./index.js",
   "author": {
-    "name": "jonathan Perry from Sequence Media Limited",
+    "name": "Jonathan Perry from Sequence Media Limited",
     "email": "sequencemedia@sequencemedia.net",
     "url": "http://sequencemedia.net"
   },
