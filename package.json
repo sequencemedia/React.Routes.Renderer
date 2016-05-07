@@ -1,6 +1,6 @@
 {
   "name": "react-routes-renderer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Routes Renderer",
   "private": true,
   "main": "./index.js",
