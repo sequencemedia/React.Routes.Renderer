@@ -1,9 +1,9 @@
 {
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module"
-    },
-    "rules": {
-        "promise/param-names": 0
-    }
+  "parserOptions": {
+  	"ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+  	"promise/param-names": 0
+  }
 }
