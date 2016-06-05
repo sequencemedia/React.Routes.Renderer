@@ -1,7 +1,14 @@
 # React.Routes.Renderer
 
-A Promise interface for rendering isomorphic React components at the server. You can instantiate this class in ES5+ without transpiling or refactoring your application.
+A Promise interface for rendering isomorphic React components in Node.
 
+An example implementation can be found in `v1` of [React.Router.Pagination.IO](http://github.com/sequencemedia/React.Router.Pagination.IO.git).
+
+A companion package, `redux-routes-renderer`, is for React Redux applications.
+
+## Example
+
+In your web server:
 ```
 var Renderer = require('react-routes-renderer').Renderer,
 	renderer = new Renderer(),
