@@ -1,2 +1,3 @@
-require('babel-register')({ ignore: /node_modules\/(?!(react-routes-renderer)).*/ })
+require('babel-register')({ ignore: /!(react-routes-renderer\/lib)/ })
+
 module.exports = require('./lib')
