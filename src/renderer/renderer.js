@@ -4,43 +4,45 @@ import ReactDOMServer from 'react-dom/server'
 import Boom from 'boom'
 
 const ROUTER_MATCH = 'Renderer encountered an error raised by ReactRouter.match()'
-const REACT_RENDER = 'Renderer caught an implemetation error in ReactDOMServer.renderToString()'
+const REACT_RENDER = 'Renderer caught an implementation error in ReactDOMServer.renderToString()'
 
-const badImplementation = (message, e) => Boom.badImplementation(message, Boom.wrap(e))
+const badImplementation = (e, message) => Boom.wrap(e, 500, message)
 const notFound = (location) => Boom.notFound(`ReactRouter.match() cannot find ${location}`)
 
 /**
  * @return {String}
  */
-const renderToString = (props) => ReactDOMServer.renderToString(
-  <RouterContext
-    {...props}
-  />
+const renderToString = (props) => (
+  ReactDOMServer.renderToString(
+    <RouterContext
+      {...props}
+    />
+  )
 )
 
 export class Renderer {
   /**
    * @return {Promise}
    */
-  render (routes, location) {
-    return new Promise((success, failure) => {
+  render = (routes, location) => (
+    new Promise((resolve, reject) => {
       match({ routes, location }, (e, redirect, props) => {
         let b
         if ((b = !!e) || (!redirect && !props)) {
-          return failure(
+          return reject(
             (b)
-              ? badImplementation(ROUTER_MATCH, e)
+              ? badImplementation(e, ROUTER_MATCH)
               : notFound(location)
           )
         }
-        if (redirect) return success({ redirect })
+        if (redirect) return resolve({ redirect })
         try {
           const rendered = renderToString(props)
-          success({ rendered })
+          resolve({ rendered })
         } catch (e) {
-          failure(badImplementation(REACT_RENDER, e))
+          reject(badImplementation(e, REACT_RENDER))
         }
       })
     })
-  }
+  )
 }
