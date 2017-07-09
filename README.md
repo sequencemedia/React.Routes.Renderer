@@ -10,25 +10,27 @@ A companion package, `redux-routes-renderer`, is for React Redux applications.
 
 In your web server:
 ```
-var Renderer = require('react-routes-renderer').Renderer,
-  renderer = new Renderer(),
-  routes = require('./path/to/routes').routes;
+const { Renderer } = require('react-routes-renderer')
+
+const renderer = new Renderer()
 ```
 
 In your web server's request handler:
 
 ```
-var path = '/request/path';
+const routes = require('./path/to/routes')
+const path = '/request/path'
+
 renderer.render(routes, path)
-  .then(function (o) {
+  .then((o) => {
     /*
-      Your success response
-    */
-  .catch(function (e) {
+     *  Your success response
+     */
+  .catch((e) => {
     /*
-      Your error response
-    */
-  });
+     *  Your failure response
+     */
+  })
 ```
 
 If React Router can match the request path to a route definition and it is rendered, then your server's success response handler will receive an object which looks like:
